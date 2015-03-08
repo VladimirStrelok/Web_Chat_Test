@@ -4,7 +4,7 @@ var https = require('https');
 var http = require('http');
 var socket = require('socket.io');
 var bodyParser = require('body-parser');
-var library = require('./library.js');
+var library = require('./library');
 
 
 var secure_port = 443;
