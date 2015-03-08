@@ -1,0 +1,123 @@
+/*
+  Author: claviska
+  Date: 2013-09-12;
+  Link: https://gist.github.com/claviska/6117193
+*/
+
+.pretty-buttons(@color, @background, @text-shadow: none) {
+
+	color: @color;
+	#gradient > .vertical(lighten(@background, 5%), darken(@background, 5%), 0%, 100%);
+	border-color: darken(@background, 10%);
+	border-bottom-color: darken(@background, 20%);
+	text-shadow: @text-shadow;
+	.box-shadow(inset 0 1px 0 rgba(255, 255, 255, .1));
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.active {
+		#gradient > .vertical(darken(@background, 0), darken(@background, 10%), 0%, 100%);
+		border-color: darken(@background, 20%);
+		color: @color;
+	}
+
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		&,
+		&:hover,
+		&:focus,
+		&:active,
+		&.active {
+			background-color: @background;
+			border-color: darken(@background, 5%);
+		}
+	}
+}
+
+/*
+  Author: mrmrs
+  Date: ;
+  Link: https://github.com/mrmrs/colors
+*/
+
+@import "../bower_components/colors/less/colors.less";
+
+
+
+//My code to add the buttons
+.btn-default {
+	.pretty-buttons(@btn-default-color, @btn-default-bg);
+}
+.btn-primary {
+	.pretty-buttons(@btn-primary-color, @btn-primary-bg);
+}
+.btn-success {
+	.pretty-buttons(@btn-success-color, @btn-success-bg);
+}
+.btn-info {
+	.pretty-buttons(@btn-info-color, @btn-info-bg);
+}
+.btn-warning {
+	.pretty-buttons(@btn-warning-color, @btn-warning-bg);
+}
+.btn-danger {
+	.pretty-buttons(@btn-danger-color, @btn-danger-bg);
+}
+.btn-inverse {
+	.pretty-buttons(@white, #474949);
+}
+
+.btn-aqua {
+	.pretty-buttons(@white, @aqua);
+}
+.btn-blue {
+	.pretty-buttons(@white, @blue);
+}
+.btn-navy {
+	.pretty-buttons(@white, @navy);
+}
+.btn-teal {
+	.pretty-buttons(@white, @teal);
+}
+.btn-olive {
+	.pretty-buttons(@white, @olive);
+}
+.btn-green {
+	.pretty-buttons(@white, @green);
+}
+.btn-lime {
+	.pretty-buttons(@white, @lime);
+}
+
+.btn-yellow {
+	.pretty-buttons(@white, @yellow);
+}
+.btn-orange {
+	.pretty-buttons(@white, @orange);
+}
+.btn-red {
+	.pretty-buttons(@white, @red);
+}
+.btn-fuchsia {
+	.pretty-buttons(@white, @fuchsia);
+}
+.btn-purple {
+	.pretty-buttons(@white, @purple);
+}
+.btn-maroon {
+	.pretty-buttons(@white, @maroon);
+}
+.btn-white {
+	.pretty-buttons(@black, @white);
+}
+.btn-silver {
+	.pretty-buttons(@black, @silver);
+}
+.btn-gray {
+	.pretty-buttons(@white, @gray);
+}
+.btn-black {
+	.pretty-buttons(@white, @black);
+}

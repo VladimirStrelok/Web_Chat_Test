@@ -1,0 +1,24 @@
+.login{
+  .make-xs-column(12);
+  .make-sm-column-offset(4);
+  .make-sm-column(4);
+  .make-md-column-offset(4);
+  .make-md-column(4);
+  .make-lg-column-offset(4);
+  .make-lg-column(4);
+  margin-top: @padding-base-vertical;
+  input{
+    .border-bottom-radius(0px);
+  }
+  input + input{
+    .border-bottom-radius(@input-border-radius);
+    .border-top-radius(0px);
+    margin-top: -1px;
+  }
+  .btn{
+    margin-top: @padding-base-vertical;
+  }
+  .alert{
+    margin-top: @padding-small-vertical;
+  }
+}

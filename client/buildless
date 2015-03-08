@@ -1,0 +1,1 @@
+lessc -x less/global.less css/global.css

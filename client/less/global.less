@@ -1,0 +1,18 @@
+@import "../bower_components/bootstrap/less/bootstrap";
+@import "pretty-buttons.less";
+
+@import url(//fonts.googleapis.com/css?family=Roboto:400,700);
+
+@background-image: ..\\img\\background.svg;
+
+html, body{
+  font-family: 'Roboto', sans-serif;
+  background-size: cover !important;
+  background: url(@background-image) no-repeat center center fixed;
+  height:100%;
+}
+body{
+  width: 100%;
+}
+
+@import "login.less";
