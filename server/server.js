@@ -22,16 +22,18 @@ secure_app.use(express.static("../client"));
 secure_app.use(bodyParser.json());
 
 secure_app.post('/login', function (req, res) {
-  console.log(req.body);
+  library.login(req.body.username, req.body.password,res)
 })
 
 secure_app.post('/register', function (req, res) {
-  console.log(req.body);
-  res.send(library.encrypt(req.body.username, req.body.password))
+  library.register_user(req.body.username, req.body.password,res)
 })
 
 io.on('connection', function (socket) {
-  console.log(socket.handshake.address)
+  console.log("Connection from: " + socket.handshake.address)
+   socket.on('disconnect', function() {
+     console.log("Closed connection from: "+socket.handshake.address)
+   });
 });
 
 secure_server.listen(secure_port);
