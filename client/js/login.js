@@ -1,5 +1,5 @@
 angular.module('Web-Chat.login', [])
-.controller('LoginCtrl', ['$scope', '$http', function($scope, $http){
+.controller('LoginCtrl', ['$scope', '$http','$state', function($scope, $http,$state){
 
   $scope.login = function(){
     if($scope.username && $scope.password){
@@ -9,7 +9,8 @@ angular.module('Web-Chat.login', [])
       ).success(
         function(data)
         {
-          console.log(data)
+          if(data.status == "valid")
+            $state.go("chat");
         }
       );
     }

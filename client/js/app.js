@@ -4,7 +4,8 @@
 // Declare app level module which depends on filters, and services
 angular.module('Web-Chat', [
   'ui.router',
-  'Web-Chat.login'
+  'Web-Chat.login',
+  'Web-Chat.chat'
 ])
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise("/");
@@ -13,8 +14,9 @@ angular.module('Web-Chat', [
       templateUrl: "partials/login.html",
       controller: "LoginCtrl"
     })
-    .state('books',{
-        url:"/books",
-        templateUrl: "partials/chat.html"
+    .state('chat',{
+        url:"/chat",
+        templateUrl: "partials/chat.html",
+        controller: "ChatCtrl"
     })
 });
