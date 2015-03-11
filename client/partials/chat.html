@@ -1,13 +1,24 @@
-<div class='chat'>
-  <nav class="navbar navbar-default navbar-fixed-top">
+<div class='chat container'>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-      ...
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Web Chat</a>
+      </div>
+       <button ng-click="logout()" type="submit" class="btn btn-red navbar-btn navbar-right">Log Out</button>
     </div>
   </nav>
-  <div class="chat_lists">
-    <h3>Active Chats</h3>
-  </div>
-  <div class="chat_window">
-    <h3>{{active_chat ? active_chat : 'No Chat Selected'}}
+  <div class="panel">
+     <div class="panel-body row">
+      <div class="chat-list">
+        Search: <input ng-model="chat_search_text">
+        <ul>
+          <li ng-repeat="chat in chats | filter:chat_search_text"> {{chat.roomname}}</li>
+        </ul>
+        <button ng-click="createChatRoom()">Create </button>
+      </div>
+      <div class="chat-window">
+        <h3>{{active_chat ? active_chat : 'No Chat Selected'}}
+      </div>
+    </div>
   </div>
 </div>

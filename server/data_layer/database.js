@@ -12,11 +12,26 @@ var database = new Sequelize('web_client', 'krieger', '', {
   //,logging:false
 });
 
-exports.User = database.define('User', {
-  id: Sequelize.INTEGER,
+exports.User = database.define('user', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey:true
+  },
   username: Sequelize.STRING,
   password: Sequelize.CHAR(128),
 },{
-  tableName:"user",
-  timestamps: false,
+  timestamps: false
 });
+
+exports.Chat_Room = database.define("chat_room",{
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey:true
+  },
+  roomname: Sequelize.STRING,
+  password: Sequelize.CHAR(128)
+},{
+  timestamps:false
+});
+
+//exports.Chat_Room.hasOne(exports.User,{as:"created_by"});

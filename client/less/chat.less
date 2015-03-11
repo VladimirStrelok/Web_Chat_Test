@@ -1,5 +1,9 @@
 .chat{
-  margin-top: @navbar-height;
+  margin-top: @navbar-height + @padding-base-vertical;
+  .chat-list{
+    .make-sm-column(4);
+  }
+  .chat-window{
+    .make-sm-column(8);
+  }
 }
-
-sudo apt-get ubinstall compizconfig-settings-manager compiz-plugins-extra

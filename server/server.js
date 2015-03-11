@@ -21,20 +21,36 @@ var io = socket(secure_server);
 secure_app.use(express.static("../client"));
 secure_app.use(bodyParser.json());
 
+
 secure_app.post('/login', function (req, res) {
   library.login(req.body.username, req.body.password,res)
 })
-
 secure_app.post('/register', function (req, res) {
   library.register_user(req.body.username, req.body.password,res)
 })
 
+secure_app.get('/chat_rooms',function(req,res){
+  library.get_chat_rooms(res);
+})
+secure_app.post('/chat_rooms', function (req, res) {
+  library.create_chat_room(req.body.roomname, req.body.password,res)
+})
+
+
 io.on('connection', function (socket) {
+  //Connection Log
   console.log("Connection from: " + socket.handshake.address)
-   socket.on('disconnect', function() {
-     console.log("Closed connection from: "+socket.handshake.address)
-   });
+  socket.on('disconnect', function() {
+    console.log("Closed connection from: "+socket.handshake.address)
+  });
+
+  socket.on('add_chat_room',function(val){
+    console.log(val)
+    io.emit('new_chat_room', val);
+  });
+
 });
+
 
 secure_server.listen(secure_port);
 console.log("HTTPS server listening on "+secure_port);

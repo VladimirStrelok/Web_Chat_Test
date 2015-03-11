@@ -43,5 +43,34 @@ exports.login = function(_username,_password,res){
       }
     }
   )
+}
 
+exports.get_chat_rooms = function(res){
+  data_layer.Chat_Room.findAll().then(function(chat_rooms){
+    res.send(chat_rooms);
+  })
+}
+exports.create_chat_room = function(_roomname,_password,res){
+  data_layer.Chat_Room.find({where:{roomname:_roomname}}).then(
+    function(Room){
+      if(!Room){
+        console.log('not found');
+        data_layer.Chat_room.max('id').then(function(max) {
+          if(isNaN(max)){
+            max = 0;
+          }
+            data_layer.Chat_room.create({
+              id:max+1,
+              username:_roomname,
+              password:(password != '' ? encrypt(_roomname,_password) : ''
+            }).then(function(){
+              res.send({status:"created"});
+            })
+        })
+      }
+      else{
+        res.send({status:"exists"});
+      }
+    }
+  )
 }

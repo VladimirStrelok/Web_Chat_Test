@@ -5,7 +5,8 @@
 angular.module('Web-Chat', [
   'ui.router',
   'Web-Chat.login',
-  'Web-Chat.chat'
+  'Web-Chat.chat',
+  'btford.socket-io'
 ])
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise("/");
@@ -19,4 +20,7 @@ angular.module('Web-Chat', [
         templateUrl: "partials/chat.html",
         controller: "ChatCtrl"
     })
+}).
+factory('socket', function (socketFactory) {
+  return socketFactory();
 });
